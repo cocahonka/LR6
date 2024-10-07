@@ -21,13 +21,15 @@
 8. [Слияние веток и разрешение конфликтов](#слияние-веток-и-разрешение-конфликтов)
 9. [Удаление побочной ветки](#удаление-побочной-ветки)
 10. [Откат коммита](#откат-коммита)
+11. [Создание ветки для отчёта](#создание-ветки-для-отчёта)
+
 
 ## Форк репозитория LR6
 1. Переходим на страницу репозитория [LR6](https://github.com/Kurtyanik/LR6)
 
 2. Нажимаем кнопку "Fork" в правом верхнем углу страницы.
 
-![Форк репозитория](1.create_fork.png)
+![Форк репозитория](assets/1.create_fork.png)
 
 ## Установка Git
 1. Скачиваем установщик Git с [официального сайта](https://git-scm.com/).
@@ -47,7 +49,7 @@ git clone https://github.com/cocahonka/LR6.git
 ```
 
 ## Добавление файла в GitHub и подтягивание изменений
-1. Нажатием кнопки "Add file" -> "Upload files" добавляем [файл](1.create_fork.png) в репозиторий.
+1. Нажатием кнопки "Add file" -> "Upload files" добавляем [файл](assets/1.create_fork.png) в репозиторий.
 
 2. Подтягиваем изменения на локальную машину:
 ```bash
@@ -60,7 +62,7 @@ git pull
 git log --all --graph --decorate --oneline
 ```
 
-![История коммитов](2.history.png)
+![История коммитов](assets/2.history.png)
 
 ## Просмотр последних изменений
 1. Для просмотра изменений последнего коммита выполнил:
@@ -68,22 +70,22 @@ git log --all --graph --decorate --oneline
 git log -p -1
 ```
 
-![Последние изменения](3.last_changes.png)
+![Последние изменения](assets/3.last_changes.png)
 2. Для просмотра незафиксированных изменений использовал:
 ```bash
 git diff
 ```
 
-![Незафиксированные изменения](4.unstaged_changes.png)
+![Незафиксированные изменения](assets/4.unstaged_changes.png)
 
 ## Создание коммита через специальный редактор - VSCode
 1. В разделе Sources Control выбрал файлы, которые хочу закоммитить, добавил файлы в индекс, ввел сообщение коммита и нажал "Commit"
     - Можно было бы использовать комбинацию комманд `git add .` и `git commit -m "message"`
-    ![Коммит через VSCode](5.vscode_commit.png)
+    ![Коммит через VSCode](assets/5.vscode_commit.png)
 
 2. Синхронизировал изменения с удаленным репозиторием при помощи "Sync Changes"
     - Можно было бы использовать команду `git push`
-    ![Синхронизация через VSCode](6.vscode_sync_changes.png)
+    ![Синхронизация через VSCode](assets/6.vscode_sync_changes.png)
 
 ## Слияние веток и разрешение конфликтов
 1. Переключился на ветку `master`:
@@ -96,7 +98,7 @@ git checkout master
 git branch -a
 ```
 
-![Список веток](7.branches.png)
+![Список веток](assets/7.branches.png)
 
 3. Слил удаленную ветку `origin/branch1` в ветку `master`:
 ```bash
@@ -105,7 +107,7 @@ git merge origin/branch1
 
 4. Разрешил конфликт в файле [merge.txt](mergefile.txt) при помощи "Merge Resolve" в VSCode (принял версию из ветки `master`).
 
-![Разрешение конфликта](8.resolve_conflict.png)
+![Разрешение конфликта](assets/8.resolve_conflict.png)
 
 ## Удаление побочной ветки
 1. Убедился, что нахожусь в ветке `master`.
@@ -120,7 +122,7 @@ git branch -d branch1
 git push origin --delete branch1
 ```
 
-![Удаление ветки](9.delete_branch.png)
+![Удаление ветки](assets/9.delete_branch.png)
 
 ## Откат коммита
 1. Получил историю коммитов:
@@ -128,18 +130,24 @@ git push origin --delete branch1
 git log --oneline
 ```
 
-![История коммитов](10.log.png)
+![История коммитов](assets/10.log.png)
 
 2. Отменил изменения коммита, добавляющего useless.txt, при помощи revert:
 ```bash
 git revert 2ba5469
 ```
 
-![Отмена коммита](11.revert.png)
+![Отмена коммита](assets/11.revert.png)
 
 3. Откатил изменения коммита, добавляющего useless2.txt, при помощи reset, после удалил из индекса:
 ```bash
 git reset HEAD~2
 ```
 
-![Откат изменений](12.reset.png)
+![Откат изменений](assets/12.reset.png)
+
+## Создание ветки для отчёта
+1. Создал новую ветку report и переключился на неё:
+```bash
+git checkout -b report
+```
